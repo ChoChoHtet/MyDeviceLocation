@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity(){
         btnLocation.setOnClickListener {
             startActivity(Intent(this,LocationAPIActivity::class.java))
         }
+        btnGeofencing.setOnClickListener {
+            startActivity(Intent(this,GeofencingActivity::class.java))
+        }
 
     }
 
