@@ -22,7 +22,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.activity_geofencing.*
 
 class GeofencingActivity : AppCompatActivity(),
     OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMarkerClickListener,
@@ -121,21 +120,15 @@ class GeofencingActivity : AppCompatActivity(),
         return locationRequest
     }
 
-    private fun writeLastLocation() {
+    private fun myCurrentLocation() {
         writeActualLocation(lastLocation)
-    }
-
-    private fun startLocationUpdate() {
     }
 
     private fun locationCallBack() {
         mLocationCallBack = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 lastLocation = locationResult!!.lastLocation
-//                val mapFragment = supportFragmentManager.findFragmentById(R.id.myMap) as SupportMapFragment
-//                mapFragment.getMapAsync(this@GeofencingActivity)
-
-                writeLastLocation()
+                myCurrentLocation()
             }
         }
 
